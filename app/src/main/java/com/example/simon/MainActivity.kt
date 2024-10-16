@@ -39,6 +39,7 @@ class MainActivity : ComponentActivity() {
 
                     BackgroundImage()
 
+
                     Column(
 
                     ) {
@@ -63,25 +64,29 @@ class MainActivity : ComponentActivity() {
                                     shape = RoundedCornerShape(
                                         topStart = 8.dp,
                                         topEnd = 8.dp,
-                                        bottomEnd = 55.dp,
+                                        bottomEnd = 60.dp,
                                         bottomStart = 8.dp
                                     ),
-                                    modifier = Modifier
-                                        .size(197.dp) // Tamaño del botón
-                                        .padding(8.dp)
-                                        .background(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(Color.Transparent, Color.Red),
-                                                start = Offset(740f, 740f),
-                                                end = Offset(10f, 10f)
-                                            ),
-                                            shape = RoundedCornerShape(
-                                                topStart = 8.dp,
-                                                topEnd = 8.dp,
-                                                bottomEnd = 55.dp,
-                                                bottomStart = 8.dp
-                                            ),
-                                        )
+                                   modifier = Modifier
+                                       .size(width = 156.dp, height = 196.dp)
+                                       .padding(
+                                           //end = 10.dp,
+                                           bottom = 40.dp,
+                                          // start = 5.dp
+                                       )
+                                       .background(
+                                           brush = Brush.linearGradient(
+                                               colors = listOf(Color.Transparent, Color.Red),
+                                               start = Offset(740f, 740f),
+                                               end = Offset(10f, 10f)
+                                           ),
+                                           shape = RoundedCornerShape(
+                                               topStart = 8.dp,
+                                               topEnd = 8.dp,
+                                               bottomEnd = 60.dp,
+                                               bottomStart = 8.dp
+                                           ),
+                                       )
                                 ) {
                                     Text("")
                                 }
@@ -93,29 +98,56 @@ class MainActivity : ComponentActivity() {
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                                     shape = RoundedCornerShape(
                                         topStart = 8.dp,
-                                        topEnd = 55.dp,
+                                        topEnd = 60.dp,
                                         bottomEnd = 8.dp,
                                         bottomStart = 8.dp
                                     ),
                                     modifier = Modifier
-                                        .size(197.dp) // Tamaño del botón
-                                        .padding(8.dp)
+                                        .size(width = 156.dp, height = 196.dp)
+                                        .padding(
+                                            top = 40.dp,
+                                            //end = 10.dp,
+                                            //start = 5.dp
+                                       )
                                         .background(
                                             brush = Brush.linearGradient(
                                                 colors = listOf(Color.Transparent, Color.Green),
                                                 start = Offset(390f, -230f),
                                                 end = Offset(0f, 200f)
                                             ),
-                                            shape = CutCornerShape(
-                                                topStart = 0.dp,
-                                                topEnd = 70.dp,
-                                                bottomEnd = 0.dp,
-                                                bottomStart = 0.dp
-                                            )
+                                            shape = RoundedCornerShape(
+                                                topStart = 8.dp,
+                                                topEnd = 60.dp,
+                                                bottomEnd = 8.dp,
+                                                bottomStart = 8.dp
+                                            ),
                                         )
                                 ) {
                                     Text("")
                                 }
+                            }
+                            Column() {
+                                Button(
+                                    onClick = {
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    shape = RoundedCornerShape(20.dp),
+                                    modifier = Modifier
+                                        .size(width = 80.dp, height = 80.dp)
+                                        .offset(y= 156.dp)
+
+                                        .background(
+                                            brush = Brush.linearGradient(
+                                                colors = listOf(Color.Transparent, Color.Blue),
+                                                start = Offset(-220f, 420f),
+                                                end = Offset(200f, 0f)
+                                            ) ,
+                                            shape = RoundedCornerShape(20.dp)
+                                        )
+                                ) {
+                                    Text("")
+                                }
+
                             }
                             Column(
 
@@ -126,9 +158,18 @@ class MainActivity : ComponentActivity() {
                                         secuencia.add(Colores.AZUL.rgb)
                                     },
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                                    shape = RoundedCornerShape(
+                                        topStart = 8.dp,
+                                        topEnd = 8.dp,
+                                        bottomEnd = 8.dp,
+                                        bottomStart = 60.dp
+                                    ),
                                     modifier = Modifier
-                                        .size(197.dp)
-                                        .padding(8.dp)
+                                        .size(width = 156.dp, height = 196.dp)
+                                        .padding(
+                                            //start = 10.dp,
+                                            bottom = 40.dp
+                                        )
                                         .background(
                                             brush = Brush.linearGradient(
                                                 colors = listOf(Color.Transparent, Color.Blue),
@@ -139,9 +180,9 @@ class MainActivity : ComponentActivity() {
                                                 topStart = 8.dp,
                                                 topEnd = 8.dp,
                                                 bottomEnd = 8.dp,
-                                                bottomStart = 55.dp
+                                                bottomStart = 60.dp
                                             ),
-                                )
+                                        )
                                 ) {
                                     Text("")
                                 }
@@ -152,14 +193,17 @@ class MainActivity : ComponentActivity() {
                                     },
                                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                                     shape = RoundedCornerShape(
-                                        topStart = 55.dp,
+                                        topStart = 60.dp,
                                         topEnd = 8.dp,
                                         bottomEnd = 8.dp,
                                         bottomStart = 8.dp
                                     ),
                                     modifier = Modifier
-                                        .size(197.dp) // Tamaño del botón
-                                        .padding(8.dp)
+                                        .size(width = 156.dp, height = 196.dp)
+                                        .padding(
+                                            top = 40.dp,
+                                            //start = 10.dp
+                                        )
                                         .background(
                                             brush = Brush.linearGradient(
                                                 colors = listOf(Color.Transparent, Color.Yellow),
@@ -167,7 +211,7 @@ class MainActivity : ComponentActivity() {
                                                 end = Offset(250f, 250f)
                                             ),
                                             shape = RoundedCornerShape(
-                                                topStart = 55.dp,
+                                                topStart = 60.dp,
                                                 topEnd = 8.dp,
                                                 bottomEnd = 8.dp,
                                                 bottomStart = 8.dp
@@ -182,7 +226,7 @@ class MainActivity : ComponentActivity() {
                             color = color,
                             name = "Record\n" + rondas.size,
                             modifier = Modifier
-                                .padding(top = 60.dp)
+                                .padding(top = 50.dp)
                                 .align(CenterHorizontally)
                         )
                     }
