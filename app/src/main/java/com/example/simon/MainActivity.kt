@@ -39,197 +39,160 @@ class MainActivity : ComponentActivity() {
 
                     BackgroundImage()
 
+                    Puntuacion(
+                        color = color,
+                        name = "Puntuacion\n" + rondas.size,
+                        modifier = Modifier
+                            .offset(y= 50.dp, x = 80.dp)
+                    )
 
-                    Column(
-
+                    Button(
+                        onClick = {
+                            color = Color.Red
+                            secuencia.add(Colores.ROJO.rgb)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                        shape = RoundedCornerShape(
+                            topStart = 8.dp,
+                            topEnd = 8.dp,
+                            bottomEnd = 90.dp,
+                            bottomStart = 8.dp
+                        ),
+                       modifier = Modifier
+                           .offset(y= 230.dp)
+                           .size(170.dp)
+                           .background(
+                               brush = Brush.linearGradient(
+                                   colors = listOf(Color.Transparent, Color.Red),
+                                   start = Offset(740f, 740f),
+                                   end = Offset(10f, 10f)
+                               ),
+                               shape = RoundedCornerShape(
+                                   topStart = 8.dp,
+                                   topEnd = 8.dp,
+                                   bottomEnd = 90.dp,
+                                   bottomStart = 8.dp
+                               ),
+                           )
                     ) {
-                        Puntuacion(
-                            color = color,
-                            name = "Puntuacion\n" + rondas.size,
-                            modifier = Modifier
-                                .padding(bottom = 60.dp)
-                                .padding(top = 65.dp)
-                                .align(CenterHorizontally)
-                        )
-                        Row(
-                        ) {
-                            Column(
-                            ) {
-                                Button(
-                                    onClick = {
-                                        color = Color.Red
-                                        secuencia.add(Colores.ROJO.rgb)
-                                    },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                                    shape = RoundedCornerShape(
-                                        topStart = 8.dp,
-                                        topEnd = 8.dp,
-                                        bottomEnd = 60.dp,
-                                        bottomStart = 8.dp
-                                    ),
-                                   modifier = Modifier
-                                       .size(width = 156.dp, height = 196.dp)
-                                       .padding(
-                                           //end = 10.dp,
-                                           bottom = 40.dp,
-                                          // start = 5.dp
-                                       )
-                                       .background(
-                                           brush = Brush.linearGradient(
-                                               colors = listOf(Color.Transparent, Color.Red),
-                                               start = Offset(740f, 740f),
-                                               end = Offset(10f, 10f)
-                                           ),
-                                           shape = RoundedCornerShape(
-                                               topStart = 8.dp,
-                                               topEnd = 8.dp,
-                                               bottomEnd = 60.dp,
-                                               bottomStart = 8.dp
-                                           ),
-                                       )
-                                ) {
-                                    Text("")
-                                }
-                                Button(
-                                    onClick = {
-                                        color = Color.Green
-                                        secuencia.add(Colores.VERDE.rgb)
-                                    },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                                    shape = RoundedCornerShape(
-                                        topStart = 8.dp,
-                                        topEnd = 60.dp,
-                                        bottomEnd = 8.dp,
-                                        bottomStart = 8.dp
-                                    ),
-                                    modifier = Modifier
-                                        .size(width = 156.dp, height = 196.dp)
-                                        .padding(
-                                            top = 40.dp,
-                                            //end = 10.dp,
-                                            //start = 5.dp
-                                       )
-                                        .background(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(Color.Transparent, Color.Green),
-                                                start = Offset(390f, -230f),
-                                                end = Offset(0f, 200f)
-                                            ),
-                                            shape = RoundedCornerShape(
-                                                topStart = 8.dp,
-                                                topEnd = 60.dp,
-                                                bottomEnd = 8.dp,
-                                                bottomStart = 8.dp
-                                            ),
-                                        )
-                                ) {
-                                    Text("")
-                                }
-                            }
-                            Column() {
-                                Button(
-                                    onClick = {
-                                    },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                                    shape = RoundedCornerShape(20.dp),
-                                    modifier = Modifier
-                                        .size(width = 80.dp, height = 80.dp)
-                                        .offset(y= 156.dp)
-
-                                        .background(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(Color.Transparent, Color.Blue),
-                                                start = Offset(-220f, 420f),
-                                                end = Offset(200f, 0f)
-                                            ) ,
-                                            shape = RoundedCornerShape(20.dp)
-                                        )
-                                ) {
-                                    Text("")
-                                }
-
-                            }
-                            Column(
-
-                            ) {
-                                Button(
-                                    onClick = {
-                                        color = Color.Blue
-                                        secuencia.add(Colores.AZUL.rgb)
-                                    },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                                    shape = RoundedCornerShape(
-                                        topStart = 8.dp,
-                                        topEnd = 8.dp,
-                                        bottomEnd = 8.dp,
-                                        bottomStart = 60.dp
-                                    ),
-                                    modifier = Modifier
-                                        .size(width = 156.dp, height = 196.dp)
-                                        .padding(
-                                            //start = 10.dp,
-                                            bottom = 40.dp
-                                        )
-                                        .background(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(Color.Transparent, Color.Blue),
-                                                start = Offset(-220f, 420f),
-                                                end = Offset(200f, 0f)
-                                            ),
-                                            shape = RoundedCornerShape(
-                                                topStart = 8.dp,
-                                                topEnd = 8.dp,
-                                                bottomEnd = 8.dp,
-                                                bottomStart = 60.dp
-                                            ),
-                                        )
-                                ) {
-                                    Text("")
-                                }
-                                Button(
-                                    onClick = {
-                                        color = Color.Yellow
-                                        secuencia.add(Colores.AMARILLO.rgb)
-                                    },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-                                    shape = RoundedCornerShape(
-                                        topStart = 60.dp,
-                                        topEnd = 8.dp,
-                                        bottomEnd = 8.dp,
-                                        bottomStart = 8.dp
-                                    ),
-                                    modifier = Modifier
-                                        .size(width = 156.dp, height = 196.dp)
-                                        .padding(
-                                            top = 40.dp,
-                                            //start = 10.dp
-                                        )
-                                        .background(
-                                            brush = Brush.linearGradient(
-                                                colors = listOf(Color.Transparent, Color.Yellow),
-                                                start = Offset(0f, 0f),
-                                                end = Offset(250f, 250f)
-                                            ),
-                                            shape = RoundedCornerShape(
-                                                topStart = 60.dp,
-                                                topEnd = 8.dp,
-                                                bottomEnd = 8.dp,
-                                                bottomStart = 8.dp
-                                            ),
-                                        )
-                                ) {
-                                    Text("")
-                                }
-                            }
-                        }
-                        Record(
-                            color = color,
-                            name = "Record\n" + rondas.size,
-                            modifier = Modifier
-                                .padding(top = 50.dp)
-                                .align(CenterHorizontally)
-                        )
+                        Text("")
                     }
+
+                    Button(
+                        onClick = {
+                            color = Color.Green
+                            secuencia.add(Colores.VERDE.rgb)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                        shape = RoundedCornerShape(
+                            topStart = 8.dp,
+                            topEnd = 90.dp,
+                            bottomEnd = 8.dp,
+                            bottomStart = 8.dp
+                        ),
+                        modifier = Modifier
+                            .offset(y= 450.dp)
+                            .size(170.dp)
+                            .background(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(Color.Transparent, Color.Green),
+                                    start = Offset(390f, -230f),
+                                    end = Offset(0f, 200f)
+                                ),
+                                shape = RoundedCornerShape(
+                                    topStart = 8.dp,
+                                    topEnd = 90.dp,
+                                    bottomEnd = 8.dp,
+                                    bottomStart = 8.dp
+                                ),
+                            )
+                    ) {
+                        Text("")
+                    }
+
+                    Button(
+                        onClick = {
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
+                        shape = RoundedCornerShape(45.dp),
+                        modifier = Modifier
+                            .size(110.dp)
+                            .offset(y= 370.dp, x = 140.dp)
+                    ) {
+                        Text("START", color = Color.White)
+                    }
+
+                    Button(
+                        onClick = {
+                            color = Color.Blue
+                            secuencia.add(Colores.AZUL.rgb)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                        shape = RoundedCornerShape(
+                            topStart = 8.dp,
+                            topEnd = 8.dp,
+                            bottomEnd = 8.dp,
+                            bottomStart = 90.dp
+                        ),
+                        modifier = Modifier
+                            .offset(y= 230.dp, x = 222.dp)
+                            .size(170.dp)
+                            .background(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(Color.Transparent, Color.Blue),
+                                    start = Offset(-220f, 420f),
+                                    end = Offset(200f, 0f)
+                                ),
+                                shape = RoundedCornerShape(
+                                    topStart = 8.dp,
+                                    topEnd = 8.dp,
+                                    bottomEnd = 8.dp,
+                                    bottomStart = 90.dp
+                                ),
+                            )
+                    ) {
+                        Text("")
+                    }
+
+                    Button(
+                        onClick = {
+                            color = Color.Yellow
+                            secuencia.add(Colores.AMARILLO.rgb)
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                        shape = RoundedCornerShape(
+                            topStart = 90.dp,
+                            topEnd = 8.dp,
+                            bottomEnd = 8.dp,
+                            bottomStart = 8.dp
+                        ),
+                        modifier = Modifier
+                            .size(170.dp)
+                            .offset(y= 450.dp, x = 222.dp)
+                            .background(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(Color.Transparent, Color.Yellow),
+                                    start = Offset(0f, 0f),
+                                    end = Offset(250f, 250f)
+                                ),
+                                shape = RoundedCornerShape(
+                                    topStart = 90.dp,
+                                    topEnd = 8.dp,
+                                    bottomEnd = 8.dp,
+                                    bottomStart = 8.dp
+                                ),
+                            )
+                    ) {
+                        Text("")
+                    }
+
+                    Record(
+                        color = color,
+                        name = "Record\n" + rondas.size,
+                        modifier = Modifier
+                            .offset(y= 700.dp, x = 130.dp)
+                    )
+
                 }
             }
         }
