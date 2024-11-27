@@ -5,9 +5,11 @@ import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.simon.Data.Data
+import com.example.simon.Data.Estados
 
 class ViewModel : ViewModel() {
     val illuminatedButton = mutableStateOf(0)
+    val estado = mutableStateOf(Estados.INICIO)
 
     fun numeroAleatorio(context: Context): Int {
         Data.numeroSecuencia = (1..4).random()

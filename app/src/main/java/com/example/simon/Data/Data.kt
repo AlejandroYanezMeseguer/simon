@@ -12,3 +12,8 @@ object Data {
     var puntuacion = mutableStateOf(0)
 
 }
+
+enum class Estados(val startActivo: Boolean, val botonActivo: Boolean) {
+    INICIO(startActivo = true, botonActivo = false),
+    GENERANDO(startActivo = false, botonActivo = true),
+}
