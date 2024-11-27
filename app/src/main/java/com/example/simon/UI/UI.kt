@@ -170,7 +170,7 @@ fun BotonVerde(model: ViewModel,illuminated: Boolean){
 @Composable
 fun BotonAmarillo(model: ViewModel,illuminated: Boolean){
     val context = LocalContext.current
-    val backgroundColor = if (illuminated) Color.Green else Color.Transparent
+    val backgroundColor = if (illuminated) Color.Yellow else Color.Transparent
     Button(
         onClick = {
             Data.numeroUsuario = 4
