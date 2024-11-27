@@ -25,13 +25,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.simon.Data.Colores
 import com.example.simon.Data.Data
+import com.example.simon.Data.Estados
 import com.example.simon.R
 import com.example.simon.ViewModel.ViewModel
 import kotlinx.coroutines.delay
 
-
+/**
+ * Composable que representa la interfaz de usuario principal.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ */
 @Composable
 fun UI(model: ViewModel) {
     val context = LocalContext.current
@@ -44,10 +47,10 @@ fun UI(model: ViewModel) {
     }
 
     BackgroundImage()
-    BotonRojo(model, model.illuminatedButton.value == 1)
-    BotonAzul(model, model.illuminatedButton.value == 2)
-    BotonVerde(model, model.illuminatedButton.value == 3)
-    BotonAmarillo(model, model.illuminatedButton.value == 4)
+    BotonRojo(model, model.illuminatedButton.value == 1, model.estado.value.botonActivo)
+    BotonAzul(model, model.illuminatedButton.value == 2, model.estado.value.botonActivo)
+    BotonVerde(model, model.illuminatedButton.value == 3, model.estado.value.botonActivo)
+    BotonAmarillo(model, model.illuminatedButton.value == 4, model.estado.value.botonActivo)
     BotonStart(model)
     Puntuacion(
         color = Color.White,
@@ -56,8 +59,14 @@ fun UI(model: ViewModel) {
     )
 }
 
+/**
+ * Composable que representa el botón rojo.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ * @param illuminated Indica si el botón está iluminado.
+ * @param enabled Indica si el botón está habilitado.
+ */
 @Composable
-fun BotonRojo(model: ViewModel,illuminated: Boolean){
+fun BotonRojo(model: ViewModel, illuminated: Boolean, enabled: Boolean) {
     val context = LocalContext.current
     val backgroundColor = if (illuminated) Color.Red else Color.Transparent
     Button(
@@ -65,6 +74,7 @@ fun BotonRojo(model: ViewModel,illuminated: Boolean){
             Data.numeroUsuario = 1
             model.comparar(context)
         },
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 30.dp,
@@ -93,8 +103,14 @@ fun BotonRojo(model: ViewModel,illuminated: Boolean){
     }
 }
 
+/**
+ * Composable que representa el botón azul.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ * @param illuminated Indica si el botón está iluminado.
+ * @param enabled Indica si el botón está habilitado.
+ */
 @Composable
-fun BotonAzul(model: ViewModel,illuminated: Boolean){
+fun BotonAzul(model: ViewModel, illuminated: Boolean, enabled: Boolean) {
     val context = LocalContext.current
     val backgroundColor = if (illuminated) Color.Blue else Color.Transparent
     Button(
@@ -102,6 +118,7 @@ fun BotonAzul(model: ViewModel,illuminated: Boolean){
             Data.numeroUsuario = 2
             model.comparar(context)
         },
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 12.dp,
@@ -130,8 +147,14 @@ fun BotonAzul(model: ViewModel,illuminated: Boolean){
     }
 }
 
+/**
+ * Composable que representa el botón verde.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ * @param illuminated Indica si el botón está iluminado.
+ * @param enabled Indica si el botón está habilitado.
+ */
 @Composable
-fun BotonVerde(model: ViewModel,illuminated: Boolean){
+fun BotonVerde(model: ViewModel, illuminated: Boolean, enabled: Boolean) {
     val context = LocalContext.current
     val backgroundColor = if (illuminated) Color.Green else Color.Transparent
     Button(
@@ -139,6 +162,7 @@ fun BotonVerde(model: ViewModel,illuminated: Boolean){
             Data.numeroUsuario = 3
             model.comparar(context)
         },
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 12.dp,
@@ -167,8 +191,14 @@ fun BotonVerde(model: ViewModel,illuminated: Boolean){
     }
 }
 
+/**
+ * Composable que representa el botón amarillo.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ * @param illuminated Indica si el botón está iluminado.
+ * @param enabled Indica si el botón está habilitado.
+ */
 @Composable
-fun BotonAmarillo(model: ViewModel,illuminated: Boolean){
+fun BotonAmarillo(model: ViewModel, illuminated: Boolean, enabled: Boolean) {
     val context = LocalContext.current
     val backgroundColor = if (illuminated) Color.Yellow else Color.Transparent
     Button(
@@ -176,6 +206,7 @@ fun BotonAmarillo(model: ViewModel,illuminated: Boolean){
             Data.numeroUsuario = 4
             model.comparar(context)
         },
+        enabled = enabled,
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 110.dp,
@@ -204,6 +235,10 @@ fun BotonAmarillo(model: ViewModel,illuminated: Boolean){
     }
 }
 
+/**
+ * Composable que representa el botón de inicio.
+ * @param model ViewModel que gestiona la lógica de la aplicación.
+ */
 @Composable
 fun BotonStart(model: ViewModel){
     val context = LocalContext.current
@@ -235,6 +270,7 @@ fun BotonStart(model: ViewModel){
     }
     Button(
         onClick = {
+            model.estado.value = Estados.GENERANDO
             val generatedNumber = model.numeroAleatorio(context)
             model.illuminatedButton.value = generatedNumber
         },
@@ -259,6 +295,9 @@ fun BotonStart(model: ViewModel){
     }
 }
 
+/**
+ * Composable que representa la imagen de fondo.
+ */
 @Composable
 fun BackgroundImage() {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -272,6 +311,12 @@ fun BackgroundImage() {
     }
 }
 
+/**
+ * Composable que representa la puntuación.
+ * @param name Nombre o texto a mostrar.
+ * @param modifier Modificador para el componente.
+ * @param color Color del texto.
+ */
 @Composable
 fun Puntuacion(name: String, modifier: Modifier = Modifier, color: Color) {
     Text(
