@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,38 +29,43 @@ import com.example.simon.Data.Colores
 import com.example.simon.Data.Data
 import com.example.simon.R
 import com.example.simon.ViewModel.ViewModel
-
+import kotlinx.coroutines.delay
 
 
 @Composable
 fun UI(model: ViewModel) {
+    val context = LocalContext.current
+
+    LaunchedEffect(model.illuminatedButton.value) {
+        if (model.illuminatedButton.value != 0) {
+            delay(500) // Illuminate for 500ms
+            model.illuminatedButton.value = 0
+        }
+    }
 
     BackgroundImage()
-    BotonRojo(model)
-    BotonAzul(model)
-    BotonVerde(model)
-    BotonAmarillo(model)
+    BotonRojo(model, model.illuminatedButton.value == 1)
+    BotonAzul(model, model.illuminatedButton.value == 2)
+    BotonVerde(model, model.illuminatedButton.value == 3)
+    BotonAmarillo(model, model.illuminatedButton.value == 4)
     BotonStart(model)
-
     Puntuacion(
         color = Color.White,
         name = "Puntuacion\n" + Data.puntuacion.value,
-        modifier = Modifier
-            .offset(y= 50.dp, x = 85.dp)
+        modifier = Modifier.offset(y = 50.dp, x = 85.dp)
     )
-
 }
 
 @Composable
-fun BotonRojo(model: ViewModel){
+fun BotonRojo(model: ViewModel,illuminated: Boolean){
     val context = LocalContext.current
-
+    val backgroundColor = if (illuminated) Color.Red else Color.Transparent
     Button(
         onClick = {
             Data.numeroUsuario = 1
             model.comparar(context)
         },
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 30.dp,
             topEnd = 12.dp,
@@ -88,15 +94,15 @@ fun BotonRojo(model: ViewModel){
 }
 
 @Composable
-fun BotonAzul(model: ViewModel){
+fun BotonAzul(model: ViewModel,illuminated: Boolean){
     val context = LocalContext.current
-
+    val backgroundColor = if (illuminated) Color.Blue else Color.Transparent
     Button(
         onClick = {
             Data.numeroUsuario = 2
             model.comparar(context)
         },
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 12.dp,
             topEnd = 30.dp,
@@ -125,15 +131,15 @@ fun BotonAzul(model: ViewModel){
 }
 
 @Composable
-fun BotonVerde(model: ViewModel){
+fun BotonVerde(model: ViewModel,illuminated: Boolean){
     val context = LocalContext.current
-
+    val backgroundColor = if (illuminated) Color.Green else Color.Transparent
     Button(
         onClick = {
             Data.numeroUsuario = 3
             model.comparar(context)
         },
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 12.dp,
             topEnd = 110.dp,
@@ -162,15 +168,15 @@ fun BotonVerde(model: ViewModel){
 }
 
 @Composable
-fun BotonAmarillo(model: ViewModel){
+fun BotonAmarillo(model: ViewModel,illuminated: Boolean){
     val context = LocalContext.current
-
+    val backgroundColor = if (illuminated) Color.Green else Color.Transparent
     Button(
         onClick = {
             Data.numeroUsuario = 4
             model.comparar(context)
         },
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
         shape = RoundedCornerShape(
             topStart = 110.dp,
             topEnd = 12.dp,
@@ -224,12 +230,13 @@ fun BotonStart(model: ViewModel){
         Text(
             "START",
             color = Color.White,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
         )
     }
     Button(
         onClick = {
-            model.numeroAleatorio(context)
+            val generatedNumber = model.numeroAleatorio(context)
+            model.illuminatedButton.value = generatedNumber
         },
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
         shape = RoundedCornerShape(45.dp),
