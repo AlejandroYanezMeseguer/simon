@@ -1,4 +1,4 @@
-package com.example.simon
+package com.example.simon.Data
 
 enum class Colores(val rgb: Int) {
 
